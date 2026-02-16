@@ -42,17 +42,15 @@ def train(df: pd.DataFrame, model_path='models/best_model.pkl') -> None:
     best_score = 0
     best_model = None
     best_model_name = None
-    best_params = None
 
     for name, model in models.items():
-        grid = GridSearchCV(model, grid_params['name'], cv=5, scoring='f1', verbose=0, n_jobs=-1)
+        grid = GridSearchCV(model, grid_params[name], cv=5, scoring='f1', verbose=0, n_jobs=-1)
         grid.fit(X_train, y_train)
 
         if best_score > grid.best_score_:
             best_score = grid.best_score
             best_model = grid.best_estimator_
-            best_name = name
-            best_params = grid.best_params_
+            best_model_name = name
 
     joblib.dump(best_model, model_path)
-    print(f'Saved best model: {best_name} with F1: {best_score}')
+    print(f'Saved best model: {best_model_name} with F1: {best_score}')
