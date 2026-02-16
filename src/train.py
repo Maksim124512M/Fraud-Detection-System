@@ -24,7 +24,7 @@ def train(df: pd.DataFrame, model_path='models/best_model.pkl') -> None:
     X_train, X_test, y_train, y_test = preprocess_data(df)
 
     models = {
-        'LogReg': LogisticRegression(),
+        'LogReg': LogisticRegression(solver='liblinear'),
         'RF': RandomForestClassifier(),
         'XGB': XGBClassifier(),
     }
