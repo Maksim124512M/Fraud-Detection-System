@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
-def preprocess_data(df: pd.DataFrame) -> ColumnTransformer:
+def preprocess_data(df: pd.DataFrame) -> tuple:
     """
     Build a preprocessing pipeline for the credit risk dataset.
 
@@ -26,7 +26,7 @@ def preprocess_data(df: pd.DataFrame) -> ColumnTransformer:
     
     # Identify numeric and categorical columns
     numeric_cols = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
-    categorical_cols = X.select_dtypes(include=['str']).columns.tolist()
+    categorical_cols = X.select_dtypes(include=['string', 'object']).columns.tolist()
     
 
     # Define transformers for numeric features
