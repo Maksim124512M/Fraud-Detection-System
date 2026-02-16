@@ -31,7 +31,8 @@ def train(df: pd.DataFrame, model_path='models/best_model.pkl') -> None:
 
     grid_params = {
         'LogReg': {
-            'penalty': ['l1', 'l2', 'elasticnet'],
+            'penalty': ['l1', 'l2'],
+            'C': [0.1, 1, 10],
         },
         'RF': {
             'n_estimators': [200, 300, 500],
