@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 
 from src.data_preprocessing import preprocess_data
 
-def train(df: pd.DataFrame) -> None:
+def train(df: pd.DataFrame, model_path='models/best_model.pkl') -> None:
     """
     Train multiple models on the credit risk dataset and save the best one.
     Args:
@@ -54,5 +54,5 @@ def train(df: pd.DataFrame) -> None:
             best_name = name
             best_params = grid.best_params_
 
-    joblib.dump(best_model, 'best_model.pkl')
+    joblib.dump(best_model, model_path)
     print(f'Saved best model: {best_name} with F1: {best_score}')
