@@ -5,7 +5,7 @@ def setup_logger(name='fraud_detecrion_system'):
     logger.setLevel(logging.DEBUG)
 
     if not logger.handlers:
-        file_handler = logging.FileHandler('project.log')
+        file_handler = logging.FileHandler('fraud_detecrion_system.log')
         file_handler.setLevel(logging.DEBUG)
         file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler.setFormatter(file_formatter)

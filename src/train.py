@@ -31,7 +31,7 @@ def train(df: pd.DataFrame, model_path='models/best_model.pkl') -> None:
     logger.info(f'X_train shape: {X_train.shape}, y_train distribution: {y_train.value_counts().to_dict()}')
 
     models = {
-        'LogReg': LogisticRegression(solver='liblinear'),
+        'LogReg': LogisticRegression(solver='saga'),
         'RF': RandomForestClassifier(),
         'XGB': XGBClassifier(),
     }
